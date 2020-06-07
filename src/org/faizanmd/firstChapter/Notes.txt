@@ -1,0 +1,7 @@
+-> A localized update to the code caused non-localized side effect.
+1st principle -> Identify the aspects of your application that vary and separate them from what stays the same.
+2nd principle -> Program to an interface, not an implementation. Interface is not literal java interface, it implies super-type.
+-> Client makes use of family of algorithms.
+3rd principle -> Favor composition over inheritance. (HAS-A can be better than IS-A). Helps us change behavior at runtime.
+Strategy pattern -> defines a family of algorithm, encapsulates each one, and makes them interchangeable.Strategy lets the algorithm vary independently of the clients that use it.
+-> When you communicate using design patterns you are doing more than just sharing lingo. Design pattern can also work as a shared vocabulary.
