@@ -1,0 +1,1 @@
+3rd principle -> Strive for loosely coupled design between objects that interact.
