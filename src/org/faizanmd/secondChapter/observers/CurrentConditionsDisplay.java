@@ -1,18 +1,21 @@
 package org.faizanmd.secondChapter.observers;
 
-import org.faizanmd.secondChapter.subjects.Subject;
+import java.util.Observable;
+import java.util.Observer;
+
+import org.faizanmd.secondChapter.subjects.WeatherData;
 
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
 
 	private float temperature;
 	private float humidity;
 	private float pressure;
-	private Subject weatherData;
+	private Observable observable;
 
-	public CurrentConditionsDisplay(Subject weatherData) {
+	public CurrentConditionsDisplay(Observable observable) {
 		super();
-		this.weatherData = weatherData;
-		this.weatherData.registerObserver(this);
+		this.observable = observable;
+		this.observable.addObserver(this);
 	}
 	
 	@Override
@@ -22,10 +25,13 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement {
 	}
 
 	@Override
-	public void update(float temperature, float humidity, float pressure) {
-		this.temperature = temperature;
-		this.humidity = humidity;
-		this.pressure = pressure;
+	public void update(Observable observable, Object args) {
+		if (observable instanceof WeatherData) {
+			WeatherData weatherData = (WeatherData) observable;
+			this.temperature = weatherData.getTemperature();
+			this.humidity = weatherData.getHumidity();
+			this.pressure = weatherData.getPressure();
+		}
 		display();
 	}
 
